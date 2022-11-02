@@ -12,7 +12,7 @@ async function main() {
         .then(response => response.json())
         .then(data => {
             if (data == null) {
-                setTimeout(recursive, timeout);
+                setTimeout(main, timeout);
                 return;
             }
 
@@ -22,7 +22,7 @@ async function main() {
 
             if (firstPage == null) {
                 firstPage = newPage;
-                setTimeout(recursive, timeout);
+                setTimeout(main, timeout);
                 return;
             }
 
