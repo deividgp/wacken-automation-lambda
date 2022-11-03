@@ -15,7 +15,7 @@ async function main() {
             if (data == null) {
                 return;
             }
-
+            const now = new Date();
             const splitData = data.split("\n");
             splitData.splice(11, 1);
             const newPage = splitData.join("\n");
@@ -26,9 +26,9 @@ async function main() {
             }
 
             if (newPage == firstPage) {
-                console.log("SAME");
+                different = false;
             } else if (firstPage != newPage && !different) {
-                console.log("DIFFERENT");
+                console.log("DIFFERENT " + now.toString());
                 twilioClient.messages
                     .create({
                         body: "TICKET AVAILABLE",
