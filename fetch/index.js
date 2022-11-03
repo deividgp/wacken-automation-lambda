@@ -1,9 +1,10 @@
 import * as dotenv from 'dotenv';
 import twilio from "twilio";
+import fetch from "node-fetch";
 dotenv.config();
 
 const twilioClient = twilio(process.env.TWILIO_ACCOUNTSID, process.env.TWILIO_AUTHTOKEN);
-const timeout = 5000;
+const interval = 7500;
 let firstPage = null;
 let different = false;
 
@@ -12,7 +13,6 @@ async function main() {
         .then(response => response.json())
         .then(data => {
             if (data == null) {
-                setTimeout(main, timeout);
                 return;
             }
 
@@ -22,7 +22,6 @@ async function main() {
 
             if (firstPage == null) {
                 firstPage = newPage;
-                setTimeout(main, timeout);
                 return;
             }
 
@@ -39,9 +38,7 @@ async function main() {
                     .done();
                 different = true;
             }
-
-            setTimeout(main, timeout);
         })
 }
 
-main();
+setInterval(main, interval);
