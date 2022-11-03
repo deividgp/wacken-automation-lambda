@@ -15,7 +15,7 @@ async function main() {
             if (data == null) {
                 return;
             }
-            const now = new Date();
+            
             const splitData = data.split("\n");
             splitData.splice(11, 1);
             const newPage = splitData.join("\n");
@@ -28,6 +28,7 @@ async function main() {
             if (newPage == firstPage) {
                 different = false;
             } else if (firstPage != newPage && !different) {
+                const now = new Date();
                 console.log("DIFFERENT " + now.toString());
                 twilioClient.messages
                     .create({
