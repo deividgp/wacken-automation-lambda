@@ -38,6 +38,9 @@ async function main() {
           .done();
         different = true;
       }
+    })
+    .catch((error) => {
+      console.error("Error:" + error);
     });
 }
 

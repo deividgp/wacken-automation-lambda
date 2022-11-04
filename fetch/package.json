@@ -10,8 +10,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.0.3",
     "node-fetch": "^3.2.10",
     "twilio": "^3.83.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

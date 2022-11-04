@@ -15,7 +15,7 @@ exports.handler = async (event, context, callback) => {
       ignoreHTTPSErrors: true,
     });
 
-    let page = await browser.newPage();
+    const page = await browser.newPage();
     await page.goto(startUrl);
 
     await page.waitForSelector("#username", {
