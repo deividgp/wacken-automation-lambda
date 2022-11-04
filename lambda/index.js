@@ -17,20 +17,18 @@ exports.handler = async (event, context, callback) => {
 
     let page = await browser.newPage();
     await page.goto(startUrl);
-    
+
     await page.waitForSelector("#username", {
-            timeout: 2000
+      timeout: 2000,
     });
-    await page.type('#username', process.env.WACKEN_USERNAME);
-    await page.type('#password', process.env.WACKEN_PASSWORD);
+    await page.type("#username", process.env.WACKEN_USERNAME);
+    await page.type("#password", process.env.WACKEN_PASSWORD);
     page.click("button[type='submit']");
     await page.waitForNavigation();
-    
-    if(page.url() != startUrl)
-      return callback(null, result);
-    
-    result = await page.content();
 
+    if (page.url() != startUrl) return callback(null, result);
+
+    result = await page.content();
   } catch (error) {
     return callback(error);
   } finally {
