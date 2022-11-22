@@ -8,7 +8,7 @@ const twilioClient = twilio(
   process.env.TWILIO_ACCOUNTSID,
   process.env.TWILIO_AUTHTOKEN
 );
-const interval = 7500;
+const interval = process.env.INTERVAL;
 const noTicketPage = fs.readFileSync("./noTicket.html");
 let different = false;
 
